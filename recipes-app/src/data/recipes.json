@@ -1,0 +1,32 @@
+[
+  {
+    "name": "구운 연어",
+    "ingredients": [
+      {"name": "연어", "amount": "500", "measurement": "g"},
+      {"name": "소금", "amount": "1", "measurement": "g"},
+      {"name": "검은 후추", "amount": "1", "measurement": "g"}
+    ],
+    "steps": [
+      "오븐을 350도로 예열한다.",
+      "연어, 소금, 후추를 준비한다.",
+      "오븐팬에 연어를 넣고 15분간 오븐에 익힌다."
+    ]
+  },
+  {
+    "name": "생선 타코",
+    "ingredients":[
+      {"name": "흰살 생선", "amount": "500", "measurement": "g"},
+      {"name": "치킨 스톡", "amount": "1", "measurement": "l"},
+      {"name": "올리브 오일", "amount": "2", "measurement": "ml"},
+      {"name": "치즈", "amount": "30", "measurement": "g"},
+      {"name": "토마토", "amount": "1", "measurement": "개"},
+      {"name": "아이스버그", "amount": "2", "measurement": "잎"}
+    ],
+    "steps": [
+      "생선을 그릴에 익힌다.",
+      "생선을 더운 토트리야에 싼다.",
+      "치킨 스톡, 올리브 오일, 치즈, 토마토를 넣는다.",
+      "아이스버그를 곁들인다."
+    ]
+  }
+]
