@@ -71,6 +71,7 @@ function Menu({title, recipes}) {
     );
 }
 
+
 export function Cat({name}) {
     return (
         <>
