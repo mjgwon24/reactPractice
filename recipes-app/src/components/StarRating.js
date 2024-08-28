@@ -8,11 +8,19 @@ import {createArray, Star} from "../utils/CommonUtil";
  * @param totalStars - 총 별점 개수
  * @param props - 추가 속성
  */
-export default function StarRating({totalStars = 5, selectedStars = 0}) {
+export default function StarRating({
+    totalStars = 5,
+    selectedStars = 0,
+    onRate = f => f
+}) {
     return(
       <>
           {createArray(totalStars).map((_,i) => (
-              <Star key={i} selected={selectedStars > i} />
+              <Star
+                  key={i}
+                  selected={selectedStars > i}
+                  onSelect={() => onRate(i+1)}
+              />
           ))}
           <p>
               {selectedStars} / {totalStars}
