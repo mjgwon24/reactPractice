@@ -3,9 +3,11 @@ import {render} from "react-dom";
 import Menu from "./components/Menu";
 import data from "./data/recipes.json";
 import StarRating from "./components/StarRating";
+import App from "./components/App";
 
 render(
     <div>
+        <App />
         <StarRating
             totalStars={7}
             style={{backgroundColor: "yellow"}}
