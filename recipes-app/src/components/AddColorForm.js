@@ -1,4 +1,5 @@
 import React, {useRef, useState} from 'react';
+import {useInput} from "./hooks";
 
 export default function AddColorForm({onNewColor = f => f}) {
     /**
@@ -33,31 +34,52 @@ export default function AddColorForm({onNewColor = f => f}) {
     /**
      * 제어되는 컴포넌트 - useState
      */
-    const [title, setTitle] = useState("");
-    const [color, setColor] = useState("#000000");
+    // const [title, setTitle] = useState("");
+    // const [color, setColor] = useState("#000000");
+    //
+    // const submit = e => {
+    //     e.preventDefault();
+    //     onNewColor(title, color);
+    //     setTitle("");
+    //     setColor("");
+    // };
+    //
+    // return (
+    //     <form onSubmit={submit}>
+    //         <input
+    //             value={title}
+    //             onChange={event => setTitle(event.target.value)}
+    //             type={"text"}
+    //             placeholder={"color title input.."}
+    //             required={true}
+    //         />
+    //         <input
+    //             value={color}
+    //             onChange={event => setColor(event.target.value)}
+    //             type={"color"}
+    //             required={true}
+    //         />
+    //         <button>ADD</button>
+    //     </form>
+    // );
 
-    const submit = e => {
-        e.preventDefault();
-        onNewColor(title, color);
-        setTitle("");
-        setColor("");
+    /**
+     * 커스텀 훅 - useInput 사용
+     */
+    const [titleProps, resetTitile] = useInput("");
+    const [colorProps, resetColor] = useInput("#000000");
+
+    const submit = event => {
+        event.preventDefault();
+        onNewColor(titleProps.value, colorProps.value);
+        resetTitile();
+        resetColor();
     };
 
     return (
         <form onSubmit={submit}>
-            <input
-                value={title}
-                onChange={event => setTitle(event.target.value)}
-                type={"text"}
-                placeholder={"color title input.."}
-                required={true}
-            />
-            <input
-                value={color}
-                onChange={event => setColor(event.target.value)}
-                type={"color"}
-                required={true}
-            />
+            <input type={"text"} placeholder={"color title input"} {...titleProps} />
+            <input type={"color"} {...colorProps} />
             <button>ADD</button>
         </form>
     );
