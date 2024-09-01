@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import StarRating from "./StarRating";
 import {FaTrash} from "react-icons/fa";
+import {ColorContext} from "../index";
 
 export function Color({
     id,
@@ -26,16 +27,17 @@ export function Color({
 };
 
 export default function ColorList({
-    colors = [],
     onRemoveColor = f => f,
     onRateColor = f => f
 }) {
-    if (!colors.length) {
-        return <div>표시할 색이 없습니다.</div>;
-    }
+    const { colors } = useContext(ColorContext);
+    console.log(colors);
+    console.log(colors.length);
+
+    if (!colors.length) return <div>표시할 색이 없습니다.</div>;
 
     return (
-        <div>
+        <div className={"color-list"}>
             {colors.map(color => (
                 <Color
                     key={color.id} {...color}

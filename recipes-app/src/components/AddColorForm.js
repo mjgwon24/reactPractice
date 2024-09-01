@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {useInput} from "./hooks";
+import {useInput} from "../customHooks/hooks_v1";
 
 export default function AddColorForm({onNewColor = f => f}) {
     /**

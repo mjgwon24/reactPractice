@@ -8,34 +8,20 @@ export default function App() {
 
     return (
         <>
-            <AddColorForm
-                onNewColor={(title, color) => {
-                    // colorData.colors 배열에서 마지막 요소의 id
-                    const lastColorId = colors[colors.length - 1].id;
-                    const newId = String(parseInt(lastColorId) + 1);
-
-                    const newColors = [
-                        ...colors,
-                        {
-                            "id": newId,
-                            "title": title,
-                            "color": color,
-                            "rating": 0
-                        }
-                    ];
-                    setColors(newColors);
-                }}
-            />
+            <AddColorForm />
             <ColorList
-                colors = {colors}
                 onRemoveColor={id => {
                     const newColors = colors.filter(color => color.id !== id);
+                    console.log(`colors: ${JSON.stringify(colors, null, 2)}`);
+                    console.log(`newColors: ${JSON.stringify(newColors, null, 2)}`);
+
                     setColors(newColors);
                 }}
                 onRateColor={(id, rating) => {
-                    const newColors = colors.map(color =>
-                        color.id === id ? {...color, rating} : color
-                    );
+                    const newColors = colors.map(color => (color.id === id ? {...color, rating} : color));
+                    console.log(`colors: ${JSON.stringify(colors, null, 2)}`);
+                    console.log(`newColors: ${JSON.stringify(newColors, null, 2)}`);
+
                     setColors(newColors);
                 }}
             />
