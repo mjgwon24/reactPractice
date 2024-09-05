@@ -1,7 +1,8 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useContext, useState} from "react";
 import colorData from "../data/color-data.json"
 
 export const ColorContext = createContext();
+export const useColors = () => useContext(ColorContext);
 
 export function ColorProvider({children}) {
     const [colors, setColors] = useState(colorData.colors);
@@ -50,4 +51,4 @@ export function ColorProvider({children}) {
             {children}
         </ColorContext.Provider>
     );
-};
+}

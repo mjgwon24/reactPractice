@@ -1,7 +1,8 @@
 import React, {useRef, useState} from 'react';
 import {useInput} from "../customHooks/hooks_v1";
+import {useColors} from "../customProvider/ColorProvider";
 
-export default function AddColorForm({onNewColor = f => f}) {
+export default function AddColorForm() {
     /**
      * 제어되지 않는 컴포넌트 - useRef
      */
@@ -68,17 +69,18 @@ export default function AddColorForm({onNewColor = f => f}) {
      */
     const [titleProps, resetTitile] = useInput("");
     const [colorProps, resetColor] = useInput("#000000");
+    const { addColor } = useColors();
 
     const submit = event => {
         event.preventDefault();
-        onNewColor(titleProps.value, colorProps.value);
+        addColor(titleProps.value, colorProps.value);
         resetTitile();
         resetColor();
     };
 
     return (
         <form onSubmit={submit}>
-            <input type={"text"} placeholder={"color title input"} {...titleProps} />
+            <input type={"text"} placeholder={"color title input"} {...titleProps} required={true} />
             <input type={"color"} {...colorProps} />
             <button>ADD</button>
         </form>

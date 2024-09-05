@@ -1,36 +1,27 @@
 import React, {useContext} from "react";
 import StarRating from "./StarRating";
 import {FaTrash} from "react-icons/fa";
-import {ColorContext} from "../index";
+import {useColors} from "../customProvider/ColorProvider";
 
-export function Color({
-    id,
-    title,
-    color,
-    rating,
-    onRemove = f => f,
-    onRate = f => f
-}) {
+export function Color({ id, title, color, rating}) {
+    const { rateColor, removeColor } = useColors();
     return (
         <section>
             <h1>{title}</h1>
-            <button onClick={() => onRemove(id)}>
+            <button onClick={() => removeColor(id)}>
                 <FaTrash />
             </button>
             <div style={{height: 50, backgroundColor: color}} />
             <StarRating
                 selectedStars={rating}
-                onRate={rating => onRate(id, rating)}
+                onRate={rating => rateColor(id, rating)}
             />
         </section>
     );
 };
 
-export default function ColorList({
-    onRemoveColor = f => f,
-    onRateColor = f => f
-}) {
-    const { colors } = useContext(ColorContext);
+export default function ColorList() {
+    const { colors } = useColors();
     console.log(colors);
     console.log(colors.length);
 
@@ -41,8 +32,6 @@ export default function ColorList({
             {colors.map(color => (
                 <Color
                     key={color.id} {...color}
-                    onRemove={onRemoveColor}
-                    onRate={onRateColor}
                 />
             ))}
         </div>

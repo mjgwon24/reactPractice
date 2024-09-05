@@ -1,23 +1,11 @@
 import React, {createContext} from "react";
 import {render} from "react-dom";
-import Menu from "./components/Menu";
-import data from "./data/recipes.json";
-import StarRating from "./components/StarRating";
 import App from "./components/App";
-import colorData from "./data/color-data.json"
-
-// 콘텍스트 생성
-export const ColorContext = createContext();
+import {ColorProvider} from "./customProvider/ColorProvider";
 
 render(
-    <ColorContext.Provider value={colorData}>
+    <ColorProvider>
         <App />
-        <StarRating
-            totalStars={7}
-            style={{backgroundColor: "yellow"}}
-            onDoubleClick={e => alert("double click")}
-        />
-        <Menu recipes={data}/>
-    </ColorContext.Provider>,
+    </ColorProvider>,
     document.getElementById("root")
 );
