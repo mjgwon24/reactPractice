@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
 import colorData from "../data/color-data.json";
 import ColorList from "./ColorList";
 import AddColorForm from "./AddColorForm";
@@ -13,8 +13,21 @@ function WordCount({children = ""}) {
     const words = useMemo(() => children.split(" "), [children]);
 
     useEffect(() => {
-        console.log("fresh render");
+        console.log("fresh render1");
     }, [words]);
+
+
+    /**
+     * useCallback - 특정 함수를 기억하여, 의존성 배열의 값이 변경된 경우에만 다시 계산
+     */
+    const fn = useCallback(() => {
+        console.log("hello");
+    }, []);
+
+    useEffect(() => {
+        console.log("fresh render2");
+        fn();
+    }, [fn]);
 
     return (
         <>
